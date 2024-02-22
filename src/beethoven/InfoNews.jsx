@@ -15,10 +15,11 @@ const InfoNews = ({ selChar, formSearchUrl }) => {
     const searchUrl = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query='
 
     useEffect(() => {
+        const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
         const fetchData = async () => {
             try {
                 setIsLoading(true) // 상태변수는 초기상태일 뿐, 사용자에게 데이터가 요청되었음을 더 빠르게 전달하기 위해서 데이터 요청이 시작될 때인 try블록 내에서 호출
-                const response = await axios.get('/v1/search/news.json', { // axios.get은 Promise를 반환하므로 await로 비동기적으로 기다린다.
+                const response = await axios.get(`${PROXY}/v1/search/news.json`, { // axios.get은 Promise를 반환하므로 await로 비동기적으로 기다린다.
                     params: {
                         query: value, // 검색 키워드
                         display: 10,
