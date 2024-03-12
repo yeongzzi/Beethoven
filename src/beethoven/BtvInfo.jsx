@@ -14,7 +14,6 @@ const BtvInfo = ({ selChar, selTab, setSelTab }) => {
         return `${url}${encoded}`
     }
 
-
     return (
         <BtvInfoStyled>
             <div className='btvInfo'>

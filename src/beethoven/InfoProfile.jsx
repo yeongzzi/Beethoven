@@ -1,12 +1,9 @@
-
 const InfoProfile = ({ selChar, formSearchUrl }) => {
     const { actor } = selChar
     const { job, birth, physique, agency, academic, debut, imgUrl } = selChar.profInfo
 
     const isBlank = (value) => value.trim() === '' // value가 공백인지 확인하는 함수
-
     const searchUrl = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query='
-
 
     return (
         <div className='infoProf'>
@@ -37,17 +34,12 @@ const InfoProfile = ({ selChar, formSearchUrl }) => {
                     </div>
                 </dl>
             </div>
-
             <div className="rightBox">
                 <div className="img" style={{ backgroundImage: `url(${imgUrl})` }}></div>
             </div>
-
             <div className="bottomBox">
                 <a href={formSearchUrl(searchUrl, job, actor)} target='_blank' title='더 많은 프로필 정보 보기'>더보기</a>
             </div>
-
-
-
         </div>
     );
 };
