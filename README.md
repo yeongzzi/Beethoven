@@ -1,4 +1,4 @@
-# Beethoven---
+# Beethoven
 
 ## 프로젝트 소개
 선정 이유
