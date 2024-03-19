@@ -27,8 +27,7 @@ export const BeethovenStyled = styled.div`
 export const BtvCastStyled = styled.div`
     .cast{
         width: 1200px;
-        margin: auto;
-        margin-bottom: 100px;
+        margin: auto auto 70px;
         background-repeat: no-repeat;
         background-position: 0 0;
         background-size: 100%;
