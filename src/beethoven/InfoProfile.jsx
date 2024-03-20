@@ -45,3 +45,8 @@ const InfoProfile = ({ selChar, formSearchUrl }) => {
 };
 
 export default InfoProfile;
+
+/* 
+    css 클래스명 > 조건부 클래스 사용하여 깔끔하게 작성
+    isblank() >  컴포넌트 외부에서 함수 정의하고 가져와 사용하는 것이 효율적이다.
+*/

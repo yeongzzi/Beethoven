@@ -1,4 +1,3 @@
-import React from 'react';
 
 const CastItem = ({ item, handleSelChar }) => {
     const { id, actor, character, imgUrl } = item

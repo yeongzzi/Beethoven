@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import ProfilePagination from './ProfilePagination';
 
-
-
-const InfoActivity = ({ selChar }) => {
-    const { profActv } = selChar
+const InfoActivity = ({ selChar: { profActv } }) => {
     const groupTab = Array.from(new Set(profActv.map(item => item.group))) // 작품활동의 중복된 그룹명을 처리
 
 
@@ -45,7 +42,11 @@ const InfoActivity = ({ selChar }) => {
                     {
                         // groupTab 객체를 배열로 변경 / 함수로 그룹명을 전달 / curGroup과 그룹명이 일치하면 클래스명 추가하고, 그룹명 옆에 개수가 나타난다
                         Array.from(groupTab).map((groupName, idx) => (
-                            <li key={idx} onClick={() => handleCurGroup(groupName)} className={curGroup === groupName ? 'active' : ''}>
+                            <li
+                                key={idx}
+                                onClick={() => handleCurGroup(groupName)}
+                                className={curGroup === groupName ? 'active' : ''}
+                            >
                                 {curGroup === groupName ? `${groupName} ${groupData.length}` : groupName}
                             </li>
                         ))}
@@ -54,14 +55,13 @@ const InfoActivity = ({ selChar }) => {
 
             <div className='cardList'>
                 {
-                    groupData.slice(firstIndex, lastIndex)
-                        .map(item =>
-                            <div key={item.no} className='cardItem'>
-                                <strong>{item.title}</strong>
-                                <p>{item.des}</p>
-                                <p>{item.date}</p>
-                            </div>
-                        )
+                    groupData.slice(firstIndex, lastIndex).map(item =>
+                        <div key={item.no} className='cardItem'>
+                            <strong>{item.title}</strong>
+                            <p>{item.des}</p>
+                            <p>{item.date}</p>
+                        </div>
+                    )
                 }
             </div>
             {
