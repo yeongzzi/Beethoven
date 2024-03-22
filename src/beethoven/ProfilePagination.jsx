@@ -1,12 +1,11 @@
-
 const ProfilePagination = ({ curPage, totPage, prevPaging, nextPaging }) => {
     return (
         <div className="pagination">
-            <button className='xi-angle-left' onClick={prevPaging}></button>
+            <button onClick={prevPaging}>&lt;</button>
             <span>{curPage}</span>
             <span>/</span>
             <span>{totPage}</span>
-            <button className='xi-angle-right' onClick={nextPaging}></button>
+            <button onClick={nextPaging}>&gt;</button>
         </div>
     );
 };

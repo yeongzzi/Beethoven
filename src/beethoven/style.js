@@ -287,12 +287,13 @@ export const BtvInfoStyled = styled.div`
                     display: flex; align-items: center; justify-content: center;
                     margin: 20px 0;
                     button {
-                        width: 30px; height: 30px;
-                        margin: 0 15px;
+                        width: 30px; height: 30px; 
+                        margin: 0 8px;
                         background: transparent;
                         border: none;
                         border-radius: 50%;
                         font-size: 16px; 
+                        line-height: 30px;
                         color: #fff;
                         &:hover {
                             background: rgba(255, 255, 255, 0.3);
