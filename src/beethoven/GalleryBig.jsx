@@ -1,4 +1,7 @@
-const GalleryBig = ({ selImg }) => {
+import useStore from "../store/useStore";
+
+const GalleryBig = () => {
+    const { selImg } = useStore();
     const { webp, jpeg } = selImg
 
     return (

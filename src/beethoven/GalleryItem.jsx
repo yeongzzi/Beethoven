@@ -1,8 +1,13 @@
-const GalleryItem = ({ item, handleSelImg }) => {
+import useStore from "../store/useStore";
+
+const GalleryItem = ({ item }) => {
     const { no, webp, jpeg } = item
+    const { updateSelImg } = useStore();
+
+    const handleSelImg = () => updateSelImg(no)
 
     return (
-        <li onClick={() => handleSelImg(no)}>
+        <li onClick={handleSelImg}>
             <picture>
                 <source srcSet={webp} type='image/webp' />
                 <source srcSet={jpeg} type='image/jpeg' />

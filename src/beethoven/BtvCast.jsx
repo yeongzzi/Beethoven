@@ -1,13 +1,16 @@
-import CastItem from './CastIem';
 import { BtvCastStyled } from './style';
+import CastItem from './CastIem';
+import useStore from '../store/useStore';
 
-const BtvCast = ({ data, handleSelChar }) => {
+const BtvCast = () => {
+    const { data } = useStore();
+
     return (
         <BtvCastStyled>
             <div className='cast'>
                 <ul>
                     {
-                        data.map(item => <CastItem key={item.id} item={item} handleSelChar={handleSelChar} />)
+                        data.map(item => <CastItem key={item.id} item={item} />)
                     }
                 </ul>
             </div>
