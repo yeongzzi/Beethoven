@@ -23,7 +23,8 @@ const useStore = create((set) => ({
     },
     isBlank: (value) => {
         return value.trim() === ''
-    }
+    },
+    
 
 
 

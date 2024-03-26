@@ -12,7 +12,7 @@ const InfoContent = () => {
             {selTab === 'char' && <InfoCharacter />}
             {selTab === 'prof' && <InfoProfile />}
             {selTab === 'actv' && <InfoActivity />}
-            {selTab === 'news' && <InfoNews selChar={selChar} formSearchUrl={formSearchUrl} />}
+            {selTab === 'news' && <InfoNews />}
         </div>
     );
 };
