@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import './assets/css/reset.css'
-import Beethoven from './beethoven/Beethoven'
+import Beethoven from './components/Beethoven'
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>

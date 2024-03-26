@@ -1,5 +1,5 @@
-import useStore from '../store/useStore';
-import GalleryItem from './GalleryItem';
+import useStore from "../../store/useStore";
+import GalleryItem from "./GalleryItem";
 
 const GalleryList = () => {
     const { selChar: { imgList } } = useStore();

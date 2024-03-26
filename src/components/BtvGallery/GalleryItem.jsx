@@ -1,4 +1,4 @@
-import useStore from "../store/useStore";
+import useStore from '../../store/useStore';
 
 const GalleryItem = ({ item }) => {
     const { no, webp, jpeg } = item

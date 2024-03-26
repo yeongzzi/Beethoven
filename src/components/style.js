@@ -143,6 +143,8 @@ export const BtvInfoStyled = styled.div`
                 }                    
             }
         }
+
+        /////////////////////////////
         // 콘텐츠 영역
         .infoContent{ 
             padding: 0 10px;

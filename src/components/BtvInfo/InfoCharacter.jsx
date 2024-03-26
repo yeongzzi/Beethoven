@@ -1,5 +1,7 @@
+import useStore from '../../store/useStore';
 
-const InfoCharacter = ({ selChar }) => {
+const InfoCharacter = () => {
+    const { selChar } = useStore();
     const { character } = selChar
     const { subTitle, des } = selChar.profChar
 
