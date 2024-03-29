@@ -1,33 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import useStore from '../../store/useStore';
 
 const InfoNews = () => {
-    const { selChar } = useStore(); 
+    const { selChar, updateSearchUrl } = useStore();
     const { actor } = selChar
     const { job } = selChar.profInfo
+
+    const [news, setNews] = useState([]) // 뉴스 데이터
+    const [sort, setSort] = useState('sim')
+    const [isLoading, setIsLoading] = useState(true)
+    const [isError, setIsError] = useState(false) 
+
     const mainJob = job.split(',')[0]
-
-    const [isLoading, setIsLoading] = useState(true) // 데이터불러오는중-true 
-    const [isError, setIsError] = useState(false) // 에러있을때-true 
-    const [news, setNews] = useState([]) //데이터
-    const value= `${mainJob} ${actor}}` //검색어
-    const [sort, setSort] = useState('date') //정렬방식
-
+    const value = `${mainJob} ${actor}}` // 검색어
     const searchUrl = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query=';
-
-    // 네이버 검색을 위한 URL 생성
-    const formSearchUrl = (url, job, actor) => {
-        const mainJob = job.split(',')[0] // 첫번째 직업 추출
-        const encoded = encodeURIComponent(`${mainJob} ${actor}`) // 정확한 검색결과를 위해 '직업+배우명'으로 검색
-        return `${url}${encoded}`
-    }    
 
     useEffect(() => {
         const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
         const fetchData = async () => {
+            setIsLoading(true) // 상태변수는 초기상태일 뿐, 사용자에게 데이터가 요청되었음을 더 빠르게 전달하기 위해서 데이터 요청이 시작될 때인 try블록 내에서 호출
             try {
-                setIsLoading(true) // 상태변수는 초기상태일 뿐, 사용자에게 데이터가 요청되었음을 더 빠르게 전달하기 위해서 데이터 요청이 시작될 때인 try블록 내에서 호출
                 const response = await axios.get(`${PROXY}/v1/search/news.json`, { // axios.get은 Promise를 반환하므로 await로 비동기적으로 기다린다.
                     params: {
                         query: value, // 검색 키워드
@@ -49,8 +42,7 @@ const InfoNews = () => {
             }
         };
         fetchData();
-    }, [sort]) // 정렬방식이 바뀔 때 실행
-
+    }, [sort]) // 정렬방식 변경될 때
 
     // 날짜형식변환 함수
     const formatDate = (target) => {
@@ -61,21 +53,19 @@ const InfoNews = () => {
             hour: 'numeric',
             minute: 'numeric',
         }
-        return new Date(target).toLocaleString('ko-KR', option)
-        // 2023. 11. 19. 오전 10:38:00
+        return new Date(target).toLocaleString('ko-KR', option) // 2023. 11. 19. 오전 10:38:00
     }
 
-    // 정렬 핸들링 함수
-    const handleSort = (curSort) => setSort(curSort)
+    const handleSort = (curSort) => setSort(curSort) // 정렬 핸들링 함수
 
-
+    const handleSerachUrl = () => updateSearchUrl(searchUrl, job, actor); // 네이버 검색을 위한 URL 생성
 
     return (
         <div className='infoNews'>
             <div className='contentContainer'>
                 <div className='sortOption'>
-                    <button className={sort === 'date' ? 'active' : ''} onClick={() => handleSort('date')}>최신순</button>
                     <button className={sort === 'sim' ? 'active' : ''} onClick={() => handleSort('sim')}>관련도순</button>
+                    <button className={sort === 'date' ? 'active' : ''} onClick={() => handleSort('date')}>최신순</button>
                 </div>
                 <ul className='newsList'>
                     {
@@ -90,12 +80,10 @@ const InfoNews = () => {
                         )
                     }
                     <li className={`newsMore ${isLoading ? 'hidden' : ''}`}>
-                        <a href={formSearchUrl(searchUrl, job, actor)} target='_blank' title='더 많은 기사 보러가기'>더 많은 기사 보러가기</a>
+                        <a href={handleSerachUrl()} target='_blank' title='더 많은 기사 보러가기'>더 많은 기사 보러가기</a>
                     </li>
                 </ul>
             </div>
-
-
             {
                 isLoading && (
                     <div className="loadingContainer">
@@ -112,13 +100,7 @@ const InfoNews = () => {
                     </div>
                 )
             }
-
-
-
-
-
         </div>
-
     );
 };
 
