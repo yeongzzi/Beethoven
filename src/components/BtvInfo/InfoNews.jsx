@@ -4,17 +4,12 @@ import useStore from '../../store/useStore';
 
 const InfoNews = () => {
     const { selChar, updateSearchUrl } = useStore();
-    const { actor } = selChar
-    const { job } = selChar.profInfo
+    const { actor, profInfo: { job } } = selChar;
 
-    const [news, setNews] = useState([]) // 뉴스 데이터
-    const [sort, setSort] = useState('sim')
-    const [isLoading, setIsLoading] = useState(true)
-    const [isError, setIsError] = useState(false) 
-
-    const mainJob = job.split(',')[0]
-    const value = `${mainJob} ${actor}}` // 검색어
-    const searchUrl = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query=';
+    const [news, setNews] = useState([]); 
+    const [sort, setSort] = useState('sim');
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
         const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
@@ -23,7 +18,7 @@ const InfoNews = () => {
             try {
                 const response = await axios.get(`${PROXY}/v1/search/news.json`, { // axios.get은 Promise를 반환하므로 await로 비동기적으로 기다린다.
                     params: {
-                        query: value, // 검색 키워드
+                        query: `${job.split(',')[0]} ${actor}}`, // 검색어 `직업명 배우명`
                         display: 10,
                         sort: sort
                     },
@@ -42,10 +37,11 @@ const InfoNews = () => {
             }
         };
         fetchData();
-    }, [sort]) // 정렬방식 변경될 때
+    }, [sort])
 
-    // 날짜형식변환 함수
-    const formatDate = (target) => {
+    const handleSort = (curSort) => setSort(curSort) // 정렬 핸들링
+
+    const formatDate = (target) => { // 날짜 포맷 변환
         const option = {
             year: 'numeric',
             month: 'numeric',
@@ -56,9 +52,10 @@ const InfoNews = () => {
         return new Date(target).toLocaleString('ko-KR', option) // 2023. 11. 19. 오전 10:38:00
     }
 
-    const handleSort = (curSort) => setSort(curSort) // 정렬 핸들링 함수
-
-    const handleSerachUrl = () => updateSearchUrl(searchUrl, job, actor); // 네이버 검색을 위한 URL 생성
+    const handleSerachUrl = () => { // 더보기 링크를 위한 URL 생성
+        const searchUrl = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query=';
+        return updateSearchUrl(searchUrl, job, actor);
+    }
 
     return (
         <div className='infoNews'>
