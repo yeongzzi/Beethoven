@@ -1,4 +1,5 @@
 const ProfilePagination = ({ curPage, totPage, prevPaging, nextPaging }) => {
+    
     return (
         <div className="pagination">
             <button onClick={prevPaging}>&lt;</button>

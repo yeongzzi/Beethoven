@@ -2,9 +2,7 @@ import InfoTab from './InfoTab';
 import InfoContent from './InfoContent';
 import { BtvInfoStyled } from '../style';
 
-
 const BtvInfo = () => {
-
 
     return (
         <BtvInfoStyled>

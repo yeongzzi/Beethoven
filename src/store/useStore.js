@@ -15,8 +15,7 @@ const useStore = create((set) => ({
         });
     },
     updateSelImg: (no) => {
-        set((state) => ({ selImg: state.selChar.imgList[no - 1] }))
-        // set({ selImg: state.selChar.imgList[no - 1]})  // 이미지를 선택하면 preview에 해당 이미지가 나타난다
+        set((state) => ({ selImg: state.selChar.imgList[no - 1] })) // 이미지를 선택 시 preview에 전달
     },
     setSelTab: (tab) => {
         set({ selTab: tab })
@@ -29,15 +28,6 @@ const useStore = create((set) => ({
         const encoded = encodeURIComponent(`${mainJob} ${actor}`); // 정확한 검색결과를 위해 '직업 배우명'으로 검색
         return `${url}${encoded}`;
     },
-
-    
-
-
-
-
-
-
-
 }))
 
 export default useStore;

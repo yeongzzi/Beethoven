@@ -23,6 +23,7 @@ export const BeethovenStyled = styled.div`
         }
     }
 `
+
 // 캐스팅보드 섹션
 export const BtvCastStyled = styled.div`
     .cast{
@@ -70,7 +71,6 @@ export const BtvCastStyled = styled.div`
 
 // 갤러리 섹션
 export const BtvGalleryStyled = styled.div`
-
         .btvGallery{
             width: 600px;
             .bigImg{
@@ -105,7 +105,7 @@ export const BtvGalleryStyled = styled.div`
         }
 `
 
-// 인포 섹션
+// 정보 섹션
 export const BtvInfoStyled = styled.div`
     .btvInfo{
         width: 600px;
@@ -143,14 +143,12 @@ export const BtvInfoStyled = styled.div`
                 }                    
             }
         }
-
-        /////////////////////////////
         // 콘텐츠 영역
         .infoContent{ 
             padding: 0 10px;
-            box-sizing: border-box;                
-
-            // 등장인물
+            box-sizing: border-box;   
+                         
+            // 등장인물 탭
             .infoChar{ 
                 margin-top: 80px;
                 text-align: center;
@@ -175,7 +173,7 @@ export const BtvInfoStyled = styled.div`
                 }
             }
 
-            // 프로필
+            // 프로필 탭
             .infoProf{
                 position: relative; 
                 display: flex; justify-content: space-between;
@@ -224,7 +222,7 @@ export const BtvInfoStyled = styled.div`
                 }
             }
 
-            // 작품활동
+            // 작품활동 탭
             .infoActv {
                 .groupTab {
                     margin: 55px 0 30px;
@@ -309,13 +307,12 @@ export const BtvInfoStyled = styled.div`
                 }
             }
 
-            // 뉴스
+            // 뉴스 탭
             .infoNews {
                 position: relative;
                 width: 100%;
                 .contentContainer {
-                    // 정렬옵션
-                    .sortOption {
+                    .sortOption { // 정렬 옵션
                         display: flex; justify-content: end;
                         margin: 50px 0 20px;
                         button {
@@ -337,9 +334,8 @@ export const BtvInfoStyled = styled.div`
                             color: #fff;
                             &::before { background: #fff; }                        
                         }
-                    }
-                    //뉴스리스트
-                    .newsList {
+                    }                    
+                    .newsList { //뉴스 리스트
                         width: 100%;
                         height: 650px;
                         overflow-y: auto;
@@ -350,28 +346,19 @@ export const BtvInfoStyled = styled.div`
                             border-radius: 3px;
                             &:hover { background-color: #ccc; }
                         }
-
-
                         .newsItem {
                             padding: 20px 0;
-                            
-                            /* border-bottom: 1px solid #363535; */
                             border-bottom: 1px solid #444;
                             &:first-child { border-top: 1px solid #444; }
-
                             a {
                                 color: #fff;
-
                                 &:hover strong{ text-decoration: underline; }
-
-
                                 strong { font-size: 18px; color: #4D86F6; }
                                 p {
                                     margin: 5px 0 3px;
                                     font-size: 15px;
                                 } 
                                 span { font-size: 13px; color: #999; }
-
                             }
                         }
                         .newsMore {
@@ -386,14 +373,10 @@ export const BtvInfoStyled = styled.div`
                                 &:hover { background-image: url(/images/btnMore2.png); }
                             } 
                         }
-                        .hidden {
-                            display: none;
-                        }
+                        .hidden { display: none; }
                     }
                 }
-
-                // 로딩 중
-                .loadingContainer {                    
+                .loadingContainer { // 로딩 중                    
                     position: absolute; top: 0; left: 50%; transform: translateX(-50%);
                     width: 100%; height: 1000px;
                     background-color: #000;
@@ -404,14 +387,13 @@ export const BtvInfoStyled = styled.div`
                         margin: 90px auto;
                     }
                 }
-                .errorContainer {
+                .errorContainer { // 에러 
                     position: absolute; 
                     top: 0; left: 0;
                     width: 100%; height: 700px;
                     padding-top: 30px;
                     background: #000;
                     text-align: center;
-                
                     .icon {
                         width: 45px; height: 45px;
                         margin: 0 auto 25px;
@@ -427,11 +409,6 @@ export const BtvInfoStyled = styled.div`
                     strong { font-size: 20px; line-height: 1.8; } 
                     p { font-size: 18px; color: #aaa; }                                       
                 }
-                
-
-                
-                    
-                
             }
         }
     }

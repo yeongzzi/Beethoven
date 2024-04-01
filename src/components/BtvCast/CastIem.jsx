@@ -6,10 +6,10 @@ const CastItem = ({ item }) => {
 
     const { updateSelChar } = useStore();
 
-    const handleChar = () => updateSelChar(id);
+    const handleSelChar = () => updateSelChar(id);
 
     return (
-        <li onClick={handleChar}>
+        <li onClick={handleSelChar}>
             <picture>
                 <source srcSet={webp} type='image/webp' />
                 <source srcSet={jpeg} type='image/jpeg' />
