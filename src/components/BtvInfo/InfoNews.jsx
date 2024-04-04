@@ -6,7 +6,7 @@ const InfoNews = () => {
     const { selChar, updateSearchUrl } = useStore();
     const { actor, profInfo: { job } } = selChar;
 
-    const [news, setNews] = useState([]); 
+    const [news, setNews] = useState([]);
     const [sort, setSort] = useState('sim');
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
@@ -23,8 +23,8 @@ const InfoNews = () => {
                         sort: sort
                     },
                     headers: {
-                        'X-Naver-Client-Id': 'oasiYo1SwHbyRA8HoZbZ',
-                        'X-Naver-Client-Secret': 'q9bZTlJByS',
+                        'X-Naver-Client-Id': import.meta.env.VITE_API_CLIENT_KEY,
+                        'X-Naver-Client-Secret': import.meta.env.VITE_API_CLIENT_SECRET,
                     },
                 });
                 const fetchNewsData = response.data.items; // 비동기 작업이 완료되었기 때문에 .then을 안써도 response를 사용할 수 있다.
